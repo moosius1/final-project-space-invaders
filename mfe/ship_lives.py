@@ -19,7 +19,7 @@ class ShipLives(Actor):
 
         width = 75 // 3
         height = 99 // 3
-        alpha = 130 # For transparency, 1 means not transparent
+        alpha = 130 
 
         x = self.cur_pos + self.mini_ship_width
         y = self.mini_ship_y

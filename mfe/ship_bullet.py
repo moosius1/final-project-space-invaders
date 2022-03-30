@@ -19,7 +19,7 @@ class ShipBullet(Actor):
 
         width = texture.width
         height = texture.height
-        alpha = 255 # For transparency, 1 means not transparent
+        alpha = 255
 
         x = self.center.x
         y = self.center.y

@@ -14,6 +14,9 @@ class Actor:
         
 
     def draw(self):
+        """ 
+        This class will be override 
+        """
         pass
 
     def advance(self):
@@ -31,11 +34,17 @@ class Actor:
         elif self.center.y > SCREEN_HEIGHT + 20:
             self.center.y = 0
 
+""" 
+This class creates initial position 
+"""
 class Point:
     def __init__(self):
         self.x = 0
         self.y = 0
 
+""" 
+This class determines Velocity of elements 
+"""
 class Velocity:
     def __init__(self):
         self.dx = 0

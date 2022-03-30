@@ -17,7 +17,7 @@ class Ship(Actor):
 
         width = 75
         height = 99
-        alpha = 255 # For transparency, 1 means not transparent
+        alpha = 255
 
         x = self.center.x
         y = self.center.y

@@ -20,7 +20,7 @@ class FirstAliens(Actor):
 
         width = 50
         height = 50
-        alpha = 255 # For transparency, 1 means not transparent
+        alpha = 255
 
         x = self.center.x
         y = self.center.y
