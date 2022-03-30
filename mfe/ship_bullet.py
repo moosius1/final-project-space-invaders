@@ -11,6 +11,7 @@ class ShipBullet(Actor):
         self.radius = BULLET_RADIUS
         self.angle = 0
         self.alive = True
+        self.laser_sound = arcade.load_sound("sounds/laser.wav")
 
     def draw(self):
         img = "images/laser.png"

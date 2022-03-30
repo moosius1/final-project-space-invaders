@@ -1,4 +1,5 @@
 from constants import *
+import arcade
 
 class Actor:
     def __init__(self):
@@ -9,6 +10,8 @@ class Actor:
         self.lives = 0
         self.speed = 0
         self.rotation = 0
+        self.rock_explosion = arcade.load_sound("sounds/alien_kill.mp3")
+        
 
     def draw(self):
         pass

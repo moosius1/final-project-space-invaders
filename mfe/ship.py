@@ -9,6 +9,7 @@ class Ship(Actor):
         self.center.y = 50
         self.radius = SHIP_RADIUS
         self.lives = SHIP_LIVES
+        self.ship_explosion = arcade.load_sound("sounds/ship_explosion.mp3")
 
     def draw(self):
         img = "images/ship.png"
