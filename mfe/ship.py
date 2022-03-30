@@ -33,6 +33,7 @@ class Ship(Actor):
 
     def hit(self):
         self.lives -= 1
+        return -200
 
     def is_off_screen(self):
         return super().is_off_screen()        

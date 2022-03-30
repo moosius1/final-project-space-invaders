@@ -28,5 +28,8 @@ class ThirdAliens(Actor):
 
         arcade.draw_texture_rectangle(x, y, width, height, texture, angle, alpha)
 
+    def hit(self):
+        return 150
+
 
     

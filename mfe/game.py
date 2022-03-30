@@ -32,6 +32,7 @@ class MainGame(arcade.View):
         self.second_aliens = []
         self.third_aliens = []
         self.ship_lives = []
+        self.score = 0
 
         """ 
         Create three rows of aliens 
@@ -95,6 +96,11 @@ class MainGame(arcade.View):
         for extra in self.ship_lives:
             extra.draw()
 
+        """
+        Drawing Score
+        """
+        self.draw_score()
+
     def update(self, delta_time):
         
         self.check_keys()
@@ -153,6 +159,11 @@ class MainGame(arcade.View):
             view = GameOverView()
             self.window.show_view(view)
             arcade.play_sound(view.game_over)
+
+        """
+        Updating Score
+        """
+        self.draw_score()
 
 
     def check_keys(self):
@@ -220,6 +231,7 @@ class MainGame(arcade.View):
                     if (abs(bullet.center.x - first_alien.center.x) < too_close and abs(bullet.center.y - first_alien.center.y) < too_close):
                         first_alien.alive = False
                         bullet.alive = False
+                        self.score  += first_alien.hit()
                         arcade.play_sound(first_alien.rock_explosion)
 
             """ 
@@ -230,7 +242,7 @@ class MainGame(arcade.View):
 
                 if (abs(self.ship.center.x - first_alien.center.x) < too_close and abs(self.ship.center.y - first_alien.center.y) < too_close):
                     # its a crash!
-                    #self.score += self.ship.hit()
+                    self.score += self.ship.hit()
                     first_alien.alive = False
                     if self.ship_lives:    
                         self.ship_lives.pop()
@@ -251,6 +263,7 @@ class MainGame(arcade.View):
                     if (abs(bullet.center.x - second_alien.center.x) < too_close and abs(bullet.center.y - second_alien.center.y) < too_close):
                         second_alien.alive = False
                         bullet.alive = False
+                        self.score  += second_alien.hit()
                         arcade.play_sound(second_alien.rock_explosion)
 
             # Make sure both ship and Second Aliens are alive before checking for a collision
@@ -259,7 +272,7 @@ class MainGame(arcade.View):
 
                 if (abs(self.ship.center.x - second_alien.center.x) < too_close and abs(self.ship.center.y - second_alien.center.y) < too_close):
                     # its a crash!
-                    #self.score += self.ship.hit()
+                    self.score += self.ship.hit()
                     second_alien.alive = False
                     if self.ship_lives:    
                         self.ship_lives.pop()
@@ -280,6 +293,7 @@ class MainGame(arcade.View):
                     if (abs(bullet.center.x - third_alien.center.x) < too_close and abs(bullet.center.y - third_alien.center.y) < too_close):
                         third_alien.alive = False
                         bullet.alive = False
+                        self.score  += third_alien.hit()
                         arcade.play_sound(third_alien.rock_explosion)
 
             # Make sure both ship and Third Aliens are alive before checking for a collision
@@ -288,7 +302,7 @@ class MainGame(arcade.View):
 
                 if (abs(self.ship.center.x - third_alien.center.x) < too_close and abs(self.ship.center.y - third_alien.center.y) < too_close):
                     # its a crash!
-                    #self.score += self.ship.hit()
+                    self.score += self.ship.hit()
                     third_alien.alive = False
                     if self.ship_lives:    
                         self.ship_lives.pop()
@@ -319,6 +333,15 @@ class MainGame(arcade.View):
         for third_alien in self.third_aliens:
             if not third_alien.alive:
                 self.third_aliens.remove(third_alien)
+
+    def draw_score(self):
+        """
+        Puts the current score on the screen
+        """
+        score_text = "Score: {}".format(self.score)
+        start_x = SCREEN_WIDTH - 100
+        start_y = SCREEN_HEIGHT - 50
+        arcade.draw_text(score_text, start_x=start_x, start_y=start_y, font_size=12, color=arcade.color.LIGHT_GRAY)
 
 
 """
